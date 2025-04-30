@@ -142,7 +142,7 @@
 
         /* Menú lateral mejorado */
         .menu-lateral {
-            width: 350px;
+            width: 500px;
             background-color: var(--color-secundario);
             padding: 25px 20px;
             border-right: 1px solid var(--borde-decorativo);

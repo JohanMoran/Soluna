@@ -6,7 +6,6 @@
     <title>SOLUN - Recuerdos y Decoración para Eventos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Paleta de colores */
         :root {
             --color-primario: #8B5A2B;
             --color-secundario: #D2B48C;
@@ -24,9 +23,8 @@
             font-family: 'Georgia', serif;
         }
 
-        /* Línea decorativa superior */
         .linea-decorativa {
-            height: 6px;
+            height: 4px;
             width: 100%;
             background: linear-gradient(90deg, var(--color-primario), var(--color-destacado), var(--color-secundario));
             position: fixed;
@@ -34,23 +32,38 @@
             z-index: 1000;
         }
 
-        /* Barra de búsqueda */
-        .barra-busqueda {
+        body {
+            background-color: var(--fondo-body);
+            color: var(--color-texto);
+            padding-top: 4px;
+        }
+
+        /* Encabezado con búsqueda */
+        .encabezado-principal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: var(--color-terciario);
             position: fixed;
-            top: 6px;
+            top: 4px;
             left: 0;
             right: 0;
-            background-color: var(--color-secundario);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: center;
             z-index: 999;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--borde-decorativo);
+        }
+
+        .titulo-encabezado h1 {
+            font-size: 1.5rem;
+            color: var(--color-primario);
+            white-space: nowrap;
         }
 
         .busqueda-contenedor {
-            width: 60%;
+            width: 300px;
             display: flex;
+            margin-left: 20px;
         }
 
         .busqueda-contenedor input {
@@ -59,6 +72,7 @@
             border: 1px solid var(--borde-decorativo);
             border-radius: 20px 0 0 20px;
             outline: none;
+            background-color: rgba(255,255,255,0.7);
         }
 
         .busqueda-contenedor button {
@@ -68,24 +82,29 @@
             border: none;
             border-radius: 0 20px 20px 0;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        body {
+        .busqueda-contenedor button:hover {
+            background-color: var(--color-destacado);
+        }
+
+        /* Contenedor principal */
+        .contenedor-general {
             display: flex;
-            background-color: var(--fondo-body);
-            color: var(--color-texto);
-            padding-top: 56px; /* Compensa línea + barra búsqueda */
+            margin-top: 70px; /* Compensa encabezado */
         }
 
-        /* Menú lateral ampliado */
+        /* Menú lateral (ahora se desplaza) */
         .menu-lateral {
-            width: 220px; /* Más ancho */
-            height: 100vh;
+            width: 220px;
             background-color: var(--color-secundario);
             padding: 20px 15px;
-            position: fixed;
-            margin-top: 50px; /* Compensa búsqueda */
             border-right: 1px solid var(--borde-decorativo);
+            position: sticky;
+            top: 70px; /* Se pega después del encabezado */
+            align-self: flex-start;
+            height: calc(100vh - 70px);
             overflow-y: auto;
         }
 
@@ -97,15 +116,15 @@
         }
 
         .logo {
-            font-size: 2.2rem; /* Más grande */
+            font-size: 2rem;
             font-weight: bold;
             color: var(--color-primario);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 5px;
         }
 
         .eslogan {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--color-destacado);
             font-style: italic;
         }
@@ -122,7 +141,7 @@
         .menu-lateral a {
             color: var(--color-texto);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             display: block;
             padding: 8px 12px;
@@ -135,7 +154,6 @@
             transform: translateX(5px);
         }
 
-        /* Sección de contacto */
         .contacto-menu {
             margin-top: 25px;
             padding-top: 15px;
@@ -146,7 +164,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 12px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .contacto-item i {
@@ -156,7 +174,6 @@
             text-align: center;
         }
 
-        /* Redes sociales */
         .redes-sociales {
             display: flex;
             justify-content: center;
@@ -166,7 +183,7 @@
 
         .redes-sociales a {
             color: var(--color-primario);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: transform 0.3s ease;
         }
 
@@ -177,28 +194,30 @@
 
         /* Contenido principal */
         .contenido-principal {
-            margin-left: 220px;
-            width: calc(100% - 220px);
+            flex: 1;
             padding: 25px;
-            margin-top: 50px; /* Compensa búsqueda */
         }
 
-        /* Resto de estilos (encabezado, productos, pie) */
-        .encabezado {
+        .seccion-bienvenida {
             background-color: var(--color-terciario);
             color: var(--color-texto);
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             margin-bottom: 30px;
             border-radius: 8px;
             border: 1px solid var(--borde-decorativo);
         }
 
+        .seccion-bienvenida h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--color-primario);
+        }
+
         .seccion-productos {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 30px;
         }
 
         .producto {
@@ -210,6 +229,39 @@
             border: 1px solid var(--borde-decorativo);
         }
 
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--borde-decorativo);
+        }
+
+        .producto-info {
+            padding: 18px;
+        }
+
+        .producto h3 {
+            margin-bottom: 10px;
+            color: var(--color-primario);
+        }
+
+        .producto p {
+            color: var(--color-destacado);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .precio {
+            font-weight: bold;
+            color: var(--color-primario);
+            font-size: 1.1rem;
+        }
+
         .pie-pagina {
             text-align: center;
             margin-top: 50px;
@@ -218,28 +270,33 @@
             color: var(--color-texto);
             border-radius: 8px;
             border: 1px solid var(--borde-decorativo);
+            font-size: 0.9rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .contenedor-general {
+                flex-direction: column;
+            }
+            
             .menu-lateral {
                 width: 100%;
                 position: relative;
-                margin-top: 0;
+                top: 0;
                 height: auto;
             }
-            .contenido-principal {
-                margin-left: 0;
-                width: 100%;
-                margin-top: 20px;
-            }
-            .barra-busqueda {
-                position: relative;
-                top: 0;
-            }
-            body {
-                padding-top: 0;
+            
+            .encabezado-principal {
                 flex-direction: column;
+                padding: 15px;
+            }
+            
+            .busqueda-contenedor {
+                width: 100%;
+                margin: 15px 0 0 0;
+            }
+            
+            .contenido-principal {
+                margin-top: 20px;
             }
         }
     </style>
@@ -248,101 +305,120 @@
     <!-- Línea decorativa superior -->
     <div class="linea-decorativa"></div>
 
-    <!-- Barra de búsqueda -->
-    <div class="barra-busqueda">
+    <!-- Encabezado con búsqueda -->
+    <header class="encabezado-principal">
+        <div class="titulo-encabezado">
+            <h1>SOLUN</h1>
+        </div>
         <div class="busqueda-contenedor">
             <input type="text" placeholder="Buscar productos...">
             <button><i class="fas fa-search"></i></button>
         </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="contenedor-general">
+        <!-- Menú lateral -->
+        <nav class="menu-lateral">
+            <div class="logo-container">
+                <div class="logo">SOLUN</div>
+                <div class="eslogan">Recuerdos y decoración para eventos</div>
+            </div>
+            
+            <ul>
+                <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="#velas"><i class="fas fa-fire"></i> Velas</a></li>
+                <li><a href="#decoraciones"><i class="fas fa-palette"></i> Decoraciones</a></li>
+                <li><a href="#ramos"><i class="fas fa-spa"></i> Ramos</a></li>
+                <li><a href="#recuerdos"><i class="fas fa-gift"></i> Recuerdos</a></li>
+            </ul>
+
+            <div class="contacto-menu">
+                <div class="contacto-item">
+                    <i class="fas fa-phone"></i>
+                    <span>335 106 9229</span>
+                </div>
+                <div class="contacto-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>solunaclientes@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="redes-sociales">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main class="contenido-principal">
+            <section class="seccion-bienvenida" id="inicio">
+                <h2>Bienvenidos a SOLUN</h2>
+                <p>Creaciones artesanales que hacen memorable cada evento</p>
+            </section>
+
+            <section id="recuerdos">
+                <h2>Nuestros Productos Destacados</h2>
+                <div class="seccion-productos">
+                    <div class="producto">
+                        <img src="https://via.placeholder.com/300x200?text=Vela+Aromática" alt="Vela aromática">
+                        <div class="producto-info">
+                            <h3>Vela de Lavanda</h3>
+                            <p>Aroma relajante para espacios íntimos</p>
+                            <p class="precio">$18.000</p>
+                        </div>
+                    </div>
+                    <div class="producto">
+                        <img src="https://via.placeholder.com/300x200?text=Centro+de+Mesa" alt="Centro de mesa">
+                        <div class="producto-info">
+                            <h3>Centro de Mesa Floral</h3>
+                            <p>Combinación de velas y flores naturales</p>
+                            <p class="precio">$25.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="pie-pagina">
+                <p>© 2023 SOLUN - Recuerdos y Decoración para Eventos | Todos los derechos reservados</p>
+            </footer>
+        </main>
     </div>
 
-    <!-- Menú lateral ampliado -->
-    <nav class="menu-lateral">
-        <div class="logo-container">
-            <div class="logo">SOLUN</div>
-            <div class="eslogan">Recuerdos y decoración para eventos</div>
-        </div>
-        
-        <ul>
-            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="#velas"><i class="fas fa-fire"></i> Velas</a></li>
-            <li><a href="#decoraciones"><i class="fas fa-palette"></i> Decoraciones</a></li>
-            <li><a href="#ramos"><i class="fas fa-spa"></i> Ramos</a></li>
-            <li><a href="#recuerdos"><i class="fas fa-gift"></i> Recuerdos</a></li>
-        </ul>
-
-        <!-- Información de contacto -->
-        <div class="contacto-menu">
-            <div class="contacto-item">
-                <i class="fas fa-phone"></i>
-                <span>335 106 9229</span>
-            </div>
-            <div class="contacto-item">
-                <i class="fas fa-envelope"></i>
-                <span>solunaclientes@gmail.com</span>
-            </div>
-        </div>
-
-        <!-- Redes sociales -->
-        <div class="redes-sociales">
-            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </nav>
-
-    <!-- Contenido principal -->
-    <main class="contenido-principal">
-        <header class="encabezado" id="inicio">
-            <h1>Bienvenidos a SOLUN</h1>
-            <p>Creaciones artesanales que hacen memorable cada evento</p>
-        </header>
-
-        <section id="recuerdos">
-            <h2>Nuestros Productos Destacados</h2>
-            <div class="seccion-productos">
-                <div class="producto">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Recuerdo de boda">
-                    <div class="producto-info">
-                        <h3>Miniatura de Boda</h3>
-                        <p>Detalle elegante para invitados</p>
-                        <p class="precio">$12.000</p>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Detalle de bautizo">
-                    <div class="producto-info">
-                        <h3>Caja de Bautizo</h3>
-                        <p>Recuerdo personalizado</p>
-                        <p class="precio">$15.000</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="pie-pagina">
-            <p>© 2023 SOLUN - Recuerdos y Decoración para Eventos | Todos los derechos reservados</p>
-        </footer>
-    </main>
-
     <script>
-        // Función de búsqueda básica
-        document.querySelector('.busqueda-contenedor button').addEventListener('click', function() {
-            const termino = document.querySelector('.busqueda-contenedor input').value;
+        // Función de búsqueda mejorada
+        const realizarBusqueda = () => {
+            const termino = document.querySelector('.busqueda-contenedor input').value.trim();
             if (termino) {
-                alert(`Buscando: "${termino}"`);
-                // Aquí podrías implementar la lógica real de búsqueda
+                const productos = document.querySelectorAll('.producto');
+                let encontrados = 0;
+                
+                productos.forEach(producto => {
+                    const textoProducto = producto.textContent.toLowerCase();
+                    if (textoProducto.includes(termino.toLowerCase())) {
+                        producto.style.display = 'block';
+                        encontrados++;
+                        producto.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        producto.style.display = 'none';
+                    }
+                });
+                
+                if (encontrados === 0) {
+                    alert(`No se encontraron productos para "${termino}"`);
+                }
+            } else {
+                document.querySelectorAll('.producto').forEach(p => p.style.display = 'block');
             }
+        };
+
+        document.querySelector('.busqueda-contenedor button').addEventListener('click', realizarBusqueda);
+        document.querySelector('.busqueda-contenedor input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') realizarBusqueda();
         });
 
-        // Permitir búsqueda al presionar Enter
-        document.querySelector('.busqueda-contenedor input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.querySelector('.busqueda-contenedor button').click();
-            }
-        });
-
-        // Interactividad del menú
+        // Resaltar elemento de menú activo
         document.querySelectorAll('.menu-lateral a').forEach(link => {
             link.addEventListener('click', (e) => {
                 document.querySelectorAll('.menu-lateral a').forEach(item => {

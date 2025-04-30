@@ -1,11 +1,20 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soluna - Velas y Decoraciones</title>
     <style>
-        /* Reset básico */
+        /* Reset y variables de color */
+        :root {
+            --pastel-rosa: #ffd6e0;
+            --pastel-lavanda: #e6e6fa;
+            --pastel-menta: #c1f0c1;
+            --pastel-beige: #f5f5dc;
+            --pastel-azul: #d4f1f9;
+            --pastel-lila: #e9d8f2;
+            --borde-decorativo: #d8bfd8;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -13,29 +22,46 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Estilos generales */
-        body {
-            display: flex;
-            background-color: #f9f5f0; /* Color crema claro */
-            color: #5a4a42; /* Color marrón oscuro */
+        /* Línea decorativa superior */
+        .linea-decorativa {
+            height: 8px;
+            width: 100%;
+            background: linear-gradient(90deg, 
+                var(--pastel-rosa), 
+                var(--pastel-lavanda), 
+                var(--pastel-menta),
+                var(--pastel-azul),
+                var(--pastel-lila));
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* Menú lateral */
+        body {
+            display: flex;
+            background-color: var(--pastel-beige);
+            color: #6d6875;
+            padding-top: 8px; /* Para la línea decorativa */
+        }
+
+        /* Menú lateral (más delgado) */
         .menu-lateral {
-            width: 250px;
+            width: 180px; /* Reducido de 250px */
             height: 100vh;
-            background-color: #8b7355; /* Color madera claro */
-            padding: 20px;
+            background-color: var(--pastel-lavanda);
+            padding: 20px 15px;
             position: fixed;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            margin-top: 8px; /* Compensa la línea decorativa */
         }
 
         .menu-lateral h2 {
-            color: #fff;
+            color: #6d6875;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-            border-bottom: 1px solid #fff;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            border-bottom: 1px dashed var(--pastel-lila);
             padding-bottom: 10px;
         }
 
@@ -44,95 +70,98 @@
         }
 
         .menu-lateral li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .menu-lateral a {
-            color: #fff;
+            color: #6d6875;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
             display: block;
-            padding: 8px;
-            border-radius: 4px;
+            padding: 8px 10px;
+            border-radius: 15px;
+            background-color: rgba(255,255,255,0.5);
         }
 
         .menu-lateral a:hover {
-            background-color: #a08669; /* Color madera más oscuro */
+            background-color: var(--pastel-rosa);
             transform: translateX(5px);
         }
 
-        /* Contenido principal */
+        /* Contenido principal (ocupa espacio liberado) */
         .contenido-principal {
-            margin-left: 250px; /* Igual al ancho del menú */
-            width: calc(100% - 250px);
-            padding: 20px;
+            margin-left: 180px; /* Igual al nuevo ancho del menú */
+            width: calc(100% - 180px);
+            padding: 25px;
+            margin-top: 8px; /* Compensa la línea decorativa */
         }
 
         /* Encabezado */
         .encabezado {
-            background-color: #d4a373; /* Color terracota */
-            color: white;
+            background-color: var(--pastel-lila);
+            color: #6d6875;
             padding: 20px;
             text-align: center;
             margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--borde-decorativo);
         }
 
         .encabezado h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
-        }
-
-        .encabezado p {
-            font-size: 1.2rem;
-            font-style: italic;
+            color: #5d536b;
         }
 
         /* Secciones de productos */
         .seccion-productos {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Más espacio */
+            gap: 25px;
             margin-top: 30px;
         }
 
         .producto {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
+            border: 1px solid var(--borde-decorativo);
         }
 
         .producto:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .producto img {
             width: 100%;
-            height: 200px;
+            height: 220px; /* Más grande */
             object-fit: cover;
+            border-bottom: 1px solid var(--borde-decorativo);
         }
 
         .producto-info {
-            padding: 15px;
+            padding: 18px;
         }
 
         .producto h3 {
             margin-bottom: 10px;
-            color: #5a4a42;
+            color: #5d536b;
         }
 
         .producto p {
-            color: #8b7355;
+            color: #8e7dbe;
             margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
         .precio {
             font-weight: bold;
-            color: #d4a373;
+            color: #9d65c9;
             font-size: 1.2rem;
         }
 
@@ -141,29 +170,32 @@
             text-align: center;
             margin-top: 50px;
             padding: 20px;
-            background-color: #8b7355;
-            color: white;
-            border-radius: 8px;
+            background-color: var(--pastel-lavanda);
+            color: #6d6875;
+            border-radius: 12px;
+            border: 1px solid var(--borde-decorativo);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
             .menu-lateral {
                 width: 100%;
                 height: auto;
                 position: relative;
+                margin-top: 0;
             }
             .contenido-principal {
                 margin-left: 0;
                 width: 100%;
+                margin-top: 0;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Línea decorativa superior -->
+    <div class="linea-decorativa"></div>
+
     <!-- Menú lateral -->
     <nav class="menu-lateral">
         <h2>Soluna</h2>
@@ -182,8 +214,8 @@
     <main class="contenido-principal">
         <!-- Encabezado -->
         <header class="encabezado" id="inicio">
-            <h1>Soluna - Velas y Decoraciones Artesanales</h1>
-            <p>Ilumina tus momentos especiales con nuestras creaciones únicas</p>
+            <h1>Soluna - Velas y Decoraciones</h1>
+            <p>Creaciones artesanales con esencia natural</p>
         </header>
 
         <!-- Sección de Velas -->
@@ -191,34 +223,19 @@
             <h2>Nuestras Velas</h2>
             <div class="seccion-productos">
                 <div class="producto">
-                    <img src="https://via.placeholder.com/300x200?text=Vela+Aromática" alt="Vela aromática">
+                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Vela aromática">
                     <div class="producto-info">
-                        <h3>Vela Aromática</h3>
-                        <p>Fragancia relajante de lavanda</p>
-                        <p class="precio">$15.000</p>
+                        <h3>Vela de Lavanda</h3>
+                        <p>Aroma relajante para espacios íntimos</p>
+                        <p class="precio">$18.000</p>
                     </div>
                 </div>
                 <div class="producto">
-                    <img src="https://via.placeholder.com/300x200?text=Vela+Decorativa" alt="Vela decorativa">
+                    <img src="https://images.unsplash.com/photo-1603394633869-5fc6e406f43b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Vela decorativa">
                     <div class="producto-info">
-                        <h3>Vela Decorativa</h3>
-                        <p>Diseño elegante para tu hogar</p>
-                        <p class="precio">$12.000</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección de Decoraciones -->
-        <section id="decoraciones">
-            <h2>Decoraciones</h2>
-            <div class="seccion-productos">
-                <div class="producto">
-                    <img src="https://via.placeholder.com/300x200?text=Centro+de+Mesa" alt="Centro de mesa">
-                    <div class="producto-info">
-                        <h3>Centro de Mesa</h3>
-                        <p>Combinación de velas y flores secas</p>
-                        <p class="precio">$25.000</p>
+                        <h3>Vela Geométrica</h3>
+                        <p>Diseño moderno para decoración</p>
+                        <p class="precio">$22.000</p>
                     </div>
                 </div>
             </div>
@@ -226,15 +243,19 @@
 
         <!-- Pie de página -->
         <footer class="pie-pagina">
-            <p>© 2023 Soluna - Velas y Decoraciones | Todos los derechos reservados</p>
+            <p>© 2023 Soluna | Velas artesanales y decoración con alma</p>
         </footer>
     </main>
 
     <script>
-        // Puedes añadir funcionalidad JavaScript aquí
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Página cargada correctamente');
-            // Ejemplo: Podrías añadir un carrito de compras aquí
+        // JavaScript para interactividad (ejemplo básico)
+        document.querySelectorAll('.menu-lateral a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('.menu-lateral a').forEach(item => {
+                    item.style.backgroundColor = 'rgba(255,255,255,0.5)';
+                });
+                e.target.style.backgroundColor = 'var(--pastel-rosa)';
+            });
         });
     </script>
 </body>
